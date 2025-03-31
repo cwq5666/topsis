@@ -28,10 +28,10 @@ def mintomax(maxx,x):
 def midtomax(best,x):
     x = list(x)
     h = [abs(best-i) for i in x]
-    M = max(x)
+    M = max(h)
     if M ==0:
         M = 1
-    ans = [abs(1-i/M) for i in h]
+    ans = [[(1-i/M)] for i in h]
     return np.array(ans)
 
 def regtomax(low,high,x):
@@ -42,11 +42,11 @@ def regtomax(low,high,x):
     ans = []
     for i in range(len(x)):
         if x[i]< low:
-            ans.append(1-(low-x[i])/M)
+            ans.append([1-(low-x[i])/M])
         elif x[i]>=low and x[i]<=high:
-            ans.append(1)
+            ans.append([1])
         else:
-            ans.append(1-(x[i]-high)/M)
+            ans.append([1-(x[i]-high)/M])
     return np.array(ans)
 ##统一指标类型
 X = np.zeros(shape = (n,1))
